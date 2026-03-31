@@ -1,6 +1,5 @@
 @font-face {
-    src: url("./fonts/FormaDJRVariableNormal[opsz\,slnt\,wght]-Edu.woff2") format("woff2"),
-         url('./fonts/FormaDJRVariableNormal[opsz\,slnt\,wght]-Edu.woff') format("woff");
+    src: url("fonts/FormaDJRVariable[opsz\,slnt\,wdth\,wght]-Edu.woff2") format("woff2");
     font-family: 'Forma';
     font-style: normal;
     font-weight: normal;
@@ -63,9 +62,9 @@ h3{
 
 @keyframes weightChange {
     0%, 100%{
-        font-variation-settings: "opsz" 16, "wght" 200, "slnt" 0;
+        font-variation-settings: "opsz" 8, "wght" 1, "slnt" -13, "wdth" 50;
     }
-    50%{font-variation-settings: "opsz" 16, "wght" 900, "slnt" -13;
+    50%{font-variation-settings: "opsz" 72, "wght" 900, "slnt" -0, "wdth" 100;
     }
 }
 /* animations for the variations section */
