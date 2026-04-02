@@ -6,7 +6,7 @@
     }
     
     body{
-    background-color: pink;
+    background-color: rgb(255, 255, 255);
     font-family: 'Forma';
 }
 /* how the page wrapper will appear on mobile */
@@ -24,13 +24,16 @@ grid-gap: 25px;
 grid-template-columns: 1fr 1fr;
 grid-template-rows: auto;
 grid-template-areas: 
-    "v h"
+    "h h"
+
+    "v v"
+
     "a a";
 }
 
 #history {
 grid-area: h;
-background-color: lightcoral;
+background-color: rgb(221, 219, 208);
 }
 
 #variations{
