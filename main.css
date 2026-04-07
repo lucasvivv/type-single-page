@@ -1,127 +1,190 @@
 @font-face {
-    src: url("fonts/FormaDJRVariable[opsz\,slnt\,wdth\,wght]-Edu.woff2") format("woff2");
-    font-family: 'Forma';
-    font-style: normal;
-    font-weight: normal;
-    }
-    
-    body{
-    background-color: rgb(255, 255, 255);
+    src: url("fonts/FormaDJRVariable[opsz,slnt,wdth,wght]-Edu.woff2") format("woff2");
     font-family: 'Forma';
 }
-/* how the page wrapper will appear on mobile */
-.page-wrapper{
-    /* where to change the width of the columns on desktop view */
-    width: min(100% - 3rem, 95ch);
-    margin-inline: auto;
-}
-/* how the page wrapper appears on desktop */
 
-@media only screen and (min-width:800px){
-.page-wrapper{
-display: grid;
-grid-gap: 25px;
-grid-template-columns: 1fr 1fr;
-grid-template-rows: auto;
-grid-template-areas: 
-    "h h"
-
-    "v v"
-
-    "a a";
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Forma', sans-serif;
 }
 
-#history {
-grid-area: h;
-background-color: rgb(221, 219, 208);
+body {
+    background: #e9e9e9;
 }
 
-#variations{
-grid-area: v;
+/* HEADER */
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    border-bottom: 1px solid black;
+    background: #d9d9d9;
 }
 
-#alphabet {
-grid-area: a;
-}
-}
-/* CSS for the footer */
-footer{
-    background-color: rgb(138, 21, 21);
-    height:200px;
+nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: black;
+    font-size: 12px;
 }
 
-/* font styling area */
-h2{
-    color: firebrick;
-    font-variation-settings: "opsz" 16, "wght" 900, "slnt" -8;
+/* HERO */
+.hero {
+    position: relative;
+    padding: 40px;
+    border-bottom: 1px solid black;
 }
 
-h3{
-    font-weight:20; 
+.hero-box {
+    background: #ffc803;
+    display: inline-block;
+    padding: 20px;
+}
+
+.hero-title {
+    font-size: 80px;
+    animation: weightChange 6s infinite;
+}
+
+.hero-sub {
+    font-size: 30px;
+}
+
+/* floating squares */
+.sq {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+}
+
+.pink { background:#ea33af; top:20px; left:20px;}
+.blue { background:#215c84; top:40px; left:300px;}
+.green { background:#65bb8a; top:50px; right:200px;}
+.red { background:#bf0304; top:120px; left:350px;}
+.light { background:#d784a2; right:40px; top:120px;}
+
+/* HISTORY */
+.history {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    padding: 40px;
+    border-bottom: 1px solid black;
+}
+
+.history h2 {
+    margin-bottom: 20px;
+}
+
+.big {
+    font-size: 40px;
+}
+
+.bold {
+    font-variation-settings: "wght" 800;
+}
+
+.light {
+    font-variation-settings: "wght" 200;
+}
+
+/* VARIATIONS */
+.variations {
+    padding: 40px;
+    border-bottom: 1px solid black;
+}
+
+.var-row {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    align-items: center;
+    margin: 30px 0;
+}
+
+.pink-text {
+    color: #ea33af;
+    font-size: 30px;
+}
+
+.spaced {
+    letter-spacing: 8px;
+}
+
+/* SLIDER */
+.slider {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 10px;
+}
+
+.line {
+    height: 1px;
+    background: black;
+    position: relative;
+}
+
+.handle {
+    width: 15px;
+    height: 15px;
+    border: 1px solid black;
+    border-radius: 50%;
+    position: absolute;
+    top: -7px;
+    left: 70%;
+    background: white;
+}
+
+.mid { left: 40%; }
+.end { left: 85%; }
+
+/* ALPHABET */
+.alphabet {
     text-align: center;
-    font-size: 5em;
-    animation: weightChange 7s infinite;
+    padding: 60px 20px;
+    border-bottom: 1px solid black;
 }
 
+.sample {
+    font-size: 80px;
+    margin: 40px 0 10px;
+    animation: weightChange 8s infinite;
+}
+
+.lang span {
+    color: #215c84;
+    font-size: 20px;
+}
+
+/* CTA */
+.cta {
+    background: #ea33af;
+    padding: 60px;
+    text-align: center;
+}
+
+.cta h2 {
+    font-size: 80px;
+    letter-spacing: 20px;
+    color: #bf0304;
+    font-style: italic;
+}
+
+/* FOOTER */
+footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 60px;
+    color: #d784a2;
+}
+
+/* ANIMATION */
 @keyframes weightChange {
-    0%, 100%{
-        font-variation-settings: "opsz" 8, "wght" 1, "slnt" -13, "wdth" 50;
+    0%,100% {
+        font-variation-settings: "wght" 100, "wdth" 50;
     }
-    50%{font-variation-settings: "opsz" 72, "wght" 900, "slnt" -0, "wdth" 100;
-    }
-}
-/* animations for the variations section */
-.weight{
-    animation: weightVariations 5s infinite;
-}
-@keyframes weightVariations {
-    0%, 100%{
-        font-variation-settings: "opsz" 16, "wght" 200, "slnt" 0;
-    }
-    50%{font-variation-settings: "opsz" 16, "wght" 900, "slnt" 0;
+    50% {
+        font-variation-settings: "wght" 900, "wdth" 100;
     }
 }
-/* where the animation is for the width change */
-.width{
-    animation: widthVariations 5s infinite;
-}
-@keyframes widthVariations {
-    0%, 100%{
-        font-variation-settings: "opsz" 16, "wght" 200, "slnt" 0;
-    }
-    50%{font-variation-settings: "opsz" 16, "wght" 900, "slnt" 0;
-    }
-}
-
-h5{
-    font-size:40px;
-    color:blue;
-    margin:15px;
-}
-
-/* variable font that changes on hover */
-.variable-font{
-    font-weight:1 ;
-    height:100vh;
-    font-size: 10em;
-    display:grid;
-    place-content: center;
-    margin: 0;
-    text-align: center;
-    font-variation-settings: "wght" 40, "wdth" 0, "XXXX" 1;
-    transition: 
-        font-weight 500ms,
-        font-variation-settings 3s;
-}
-
-.variable-font:hover{
-    font-weight:500 ;
-    height:100vh;
-    font-size: 7em;
-    display:grid;
-    place-content: center;
-    margin: 0;
-    text-align: center;
-    font-variation-settings: "wght" 120, "wdth" 0, "XXXX" 100;
-}
-
