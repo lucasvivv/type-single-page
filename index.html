@@ -20,28 +20,32 @@
 
 <!-- HERO -->
 <section class="hero">
+    <p class="hero-kicker">Variable type specimen / web typography</p>
     <div class="hero-box">
         <h2 class="hero-title">forma</h2>
         <h3 class="hero-sub">DJR</h3>
     </div>
+    <p class="hero-note">Drag the color blocks. Scroll through weight, width, language, and history.</p>
 
     <!-- floating squares -->
     <div class="sq pink"></div>
     <div class="sq blue"></div>
     <div class="sq green"></div>
     <div class="sq red"></div>
-    <div class="sq light"></div>
+    <div class="sq light-square"></div>
 </section>
 
 <!-- HISTORY -->
 <section id="history" class="history">
     <div class="history-left">
-        <h2>HISTORY</h2>
-        <p class="big bold">HISTORY</p>
-        <p class="big light">HISTORY</p>
+        <h2>History</h2>
+        <p class="history-stack bold">HISTORY</p>
+        <p class="history-stack outline">HISTORY</p>
+        <p class="history-stack light">HISTORY</p>
     </div>
 
     <div class="history-right">
+        <p class="history-tag">David Jonathan Ross / DJR Type</p>
         <p>
             Forma DJR Banner was designed by David Jonathan Ross and released
             through DJR Type as part of a broader exploration of flexible,
@@ -52,43 +56,57 @@
             width, and optical size, making it especially suited for large-scale
             and responsive design.
         </p>
+        <div class="history-meta">
+            <p>Grotesque structure</p>
+            <p>Geometric energy</p>
+            <p>Built for scale</p>
+        </div>
     </div>
 </section>
 
 <!-- VARIATIONS -->
 <section id="variations" class="variations">
+    <div class="variations-top">
+        <p class="section-label">Variable axes</p>
+        <p class="variations-copy">
+            Forma DJR shifts personality with small changes. Pull the sliders
+            and watch the specimen stretch, tighten, and sharpen.
+        </p>
+    </div>
 
-    <div class="var-row">
-        <h3 class="pink-text">Weight</h3>
-        <div class="slider">
-            <span>1</span>
-            <div class="line"><div class="handle"></div></div>
-            <span>900</span>
+    <div class="live-specimen">
+        <p class="specimen-label">Live specimen</p>
+        <p class="specimen-word" id="specimenWord">FORMA</p>
+        <div class="specimen-values">
+            <span id="weightValue">wght 400</span>
+            <span id="widthValue">wdth 75</span>
+            <span id="opszValue">opsz 16</span>
         </div>
     </div>
 
     <div class="var-row">
-        <h3 class="pink-text width">Width</h3>
-        <div class="slider">
-            <span>50</span>
-            <div class="line"><div class="handle mid"></div></div>
-            <span>100</span>
-        </div>
+        <h3 class="pink-text" id="weightText">Weight</h3>
+        <input type="range" min="1" max="900" value="400" id="weightSlider">
     </div>
 
     <div class="var-row">
-        <h3 class="pink-text spaced">Optical size</h3>
-        <div class="slider">
-            <span>8</span>
-            <div class="line"><div class="handle end"></div></div>
-            <span>72</span>
-        </div>
+        <h3 class="pink-text" id="widthText">Width</h3>
+        <input type="range" min="50" max="100" value="75" id="widthSlider">
+    </div>
+
+    <div class="var-row">
+        <h3 class="pink-text spaced" id="opszText">Optical size</h3>
+        <input type="range" min="8" max="72" value="16" id="opszSlider">
     </div>
 
 </section>
 
 <!-- ALPHABET -->
 <section id="alphabet" class="alphabet">
+    <div class="alphabet-head">
+        <p class="section-label">Character set</p>
+        <h2>Language, rhythm, shape</h2>
+    </div>
 
     <div class="lang">
         <p class="sample">Форма Кириллица</p>
@@ -119,7 +137,8 @@
 
 <!-- CTA -->
 <section class="cta">
-    <h2>DOWNLOAD</h2>
+    <p class="section-label">Final impression</p>
+    <h2>DOWNLOAD<br>FORMA DJR</h2>
 </section>
 
 <!-- FOOTER -->
@@ -135,6 +154,94 @@
         <p>774-488-9362</p>
     </div>
 </footer>
+
+<script>
+const weightSlider = document.getElementById("weightSlider");
+const widthSlider = document.getElementById("widthSlider");
+const opszSlider = document.getElementById("opszSlider");
+
+const weightText = document.getElementById("weightText");
+const widthText = document.getElementById("widthText");
+const opszText = document.getElementById("opszText");
+const specimenWord = document.getElementById("specimenWord");
+const weightValue = document.getElementById("weightValue");
+const widthValue = document.getElementById("widthValue");
+const opszValue = document.getElementById("opszValue");
+
+function updateFont() {
+    const wght = weightSlider.value;
+    const wdth = widthSlider.value;
+    const opsz = opszSlider.value;
+    const settings = `"wght" ${wght}, "wdth" ${wdth}, "opsz" ${opsz}`;
+
+    weightText.style.fontVariationSettings = settings;
+    widthText.style.fontVariationSettings = settings;
+    opszText.style.fontVariationSettings = settings;
+    specimenWord.style.fontVariationSettings = settings;
+
+    weightValue.textContent = `wght ${wght}`;
+    widthValue.textContent = `wdth ${wdth}`;
+    opszValue.textContent = `opsz ${opsz}`;
+}
+
+weightSlider.addEventListener("input", updateFont);
+widthSlider.addEventListener("input", updateFont);
+opszSlider.addEventListener("input", updateFont);
+updateFont();
+
+const hero = document.querySelector(".hero");
+const squares = document.querySelectorAll(".sq");
+
+function positionSquaresForDragging() {
+    const heroRect = hero.getBoundingClientRect();
+
+    squares.forEach((square) => {
+        const rect = square.getBoundingClientRect();
+        square.style.left = `${rect.left - heroRect.left}px`;
+        square.style.top = `${rect.top - heroRect.top}px`;
+        square.style.right = "auto";
+    });
+}
+
+function makeSquaresDraggable() {
+    positionSquaresForDragging();
+
+    squares.forEach((square) => {
+        square.addEventListener("pointerdown", (event) => {
+            const heroRect = hero.getBoundingClientRect();
+            const squareRect = square.getBoundingClientRect();
+            const offsetX = event.clientX - squareRect.left;
+            const offsetY = event.clientY - squareRect.top;
+
+            square.classList.add("dragging");
+            square.setPointerCapture(event.pointerId);
+
+            const onPointerMove = (moveEvent) => {
+                const maxLeft = hero.clientWidth - square.offsetWidth;
+                const maxTop = hero.clientHeight - square.offsetHeight;
+                const nextLeft = moveEvent.clientX - heroRect.left - offsetX;
+                const nextTop = moveEvent.clientY - heroRect.top - offsetY;
+
+                square.style.left = `${Math.min(Math.max(0, nextLeft), maxLeft)}px`;
+                square.style.top = `${Math.min(Math.max(0, nextTop), maxTop)}px`;
+            };
+
+            const stopDragging = () => {
+                square.classList.remove("dragging");
+                square.removeEventListener("pointermove", onPointerMove);
+                square.removeEventListener("pointerup", stopDragging);
+                square.removeEventListener("pointercancel", stopDragging);
+            };
+
+            square.addEventListener("pointermove", onPointerMove);
+            square.addEventListener("pointerup", stopDragging);
+            square.addEventListener("pointercancel", stopDragging);
+        });
+    });
+}
+
+window.addEventListener("load", makeSquaresDraggable);
+</script>
 
 </body>
 </html>
