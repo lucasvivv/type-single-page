@@ -160,7 +160,7 @@ section {
 .history-stack {
     font-size: clamp(4.5rem, 13vw, 11rem);
     line-height: 0.9;
-    letter-spacing: -0.05em;
+    letter-spacing: 0.02em;
 }
 
 .history-stack + .history-stack {
@@ -199,21 +199,6 @@ section {
 .history-right > p:last-of-type {
     font-size: clamp(1.1rem, 1.9vw, 1.55rem);
     line-height: 1.4;
-}
-
-.history-meta {
-    margin-top: 2rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-}
-
-.history-meta p {
-    border: 1px solid var(--ink);
-    padding: 0.45rem 0.7rem;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
 }
 
 /* VARIATIONS */

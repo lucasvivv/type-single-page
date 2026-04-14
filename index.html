@@ -56,11 +56,6 @@
             width, and optical size, making it especially suited for large-scale
             and responsive design.
         </p>
-        <div class="history-meta">
-            <p>Grotesque structure</p>
-            <p>Geometric energy</p>
-            <p>Built for scale</p>
-        </div>
     </div>
 </section>
 
@@ -174,9 +169,9 @@ function updateFont() {
     const opsz = opszSlider.value;
     const settings = `"wght" ${wght}, "wdth" ${wdth}, "opsz" ${opsz}`;
 
-    weightText.style.fontVariationSettings = settings;
-    widthText.style.fontVariationSettings = settings;
-    opszText.style.fontVariationSettings = settings;
+    weightText.style.fontVariationSettings = `"wght" ${wght}`;
+    widthText.style.fontVariationSettings = `"wdth" ${wdth}`;
+    opszText.style.fontVariationSettings = `"opsz" ${opsz}`;
     specimenWord.style.fontVariationSettings = settings;
 
     weightValue.textContent = `wght ${wght}`;
